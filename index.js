@@ -5,6 +5,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const app = express();
 
 passport.use(new GoogleStrategy());
+// passport.use -> passport I want you to know that there is a new strategy available for use
 
 // app represents the underlying express server
 // app.get creates a new route handler

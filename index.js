@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
+// require the cookieSession function that will allow us to deal with cookies
+// within an express app
 const passport = require('passport');
 const keys = require('./config/keys');
 require('./models/User');
@@ -13,10 +15,13 @@ app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey]
-  });
+  })
 );
+// Tell express how to use cookies
 app.use(passport.initialize());
 app.use(passport.session());
+// Tell passport that it will use cookies to verify a session
+// passport provides a number of other ways to verify a user
 
 
 require('./routes/authRoutes')(app);
